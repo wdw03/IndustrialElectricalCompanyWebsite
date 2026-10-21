@@ -1,0 +1,10 @@
+{
+  "description": "This responsive web application showcases POWERTECH ENGINEERS' industrial electrical solutions, offering product catalogs, service details, and project portfolios for clients seeking reliable power engineering.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

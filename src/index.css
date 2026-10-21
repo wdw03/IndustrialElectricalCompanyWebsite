@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #081f3a;
+  --color-orange: #ef6b25;
+  --color-steel: #f4f6f8;
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Poppins", sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; color: #334155; background: #fff; font-family: "Inter", sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4 { font-family: "Poppins", sans-serif; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button { cursor: pointer; }
+
+@layer components {
+  .site-container { @apply mx-auto w-full max-w-[1320px] px-5 md:px-8; }
+  .section-padding { @apply py-20 md:py-28; }
+  .section-title { @apply text-3xl font-extrabold leading-[1.15] tracking-[-.025em] md:text-[42px]; }
+  .eyebrow { @apply flex items-center gap-3 text-[11px] font-extrabold uppercase tracking-[.22em] text-orange; }
+  .eyebrow span { @apply inline-block h-px w-9 bg-orange; }
+  .btn-primary { @apply inline-flex items-center gap-2 bg-orange px-6 py-4 text-xs font-bold uppercase tracking-[.12em] text-white transition duration-300 hover:bg-[#d95714]; }
+  .btn-dark { @apply inline-flex items-center gap-2 bg-navy px-6 py-4 text-xs font-bold uppercase tracking-[.12em] text-white transition hover:bg-orange; }
+  .btn-outline-light { @apply inline-flex items-center border border-white/45 px-6 py-4 text-xs font-bold uppercase tracking-[.12em] text-white transition hover:border-white hover:bg-white hover:text-navy; }
+  .nav-link { @apply relative py-2 text-[12px] font-bold uppercase tracking-[.07em] text-slate-600 transition hover:text-orange; }
+  .nav-link::after { content: ""; @apply absolute bottom-0 left-0 h-0.5 w-0 bg-orange transition-all duration-300; }
+  .nav-link:hover::after, .nav-link.active::after { @apply w-full; }
+  .nav-link.active { @apply text-navy; }
+  .footer-title { @apply mb-6 text-sm font-bold uppercase tracking-[.14em] text-white; }
+  .footer-links { @apply flex flex-col gap-3 text-sm text-slate-400; }
+  .footer-links a { @apply transition hover:translate-x-1 hover:text-orange; }
+  .text-link { @apply inline-flex shrink-0 items-center gap-2 text-xs font-extrabold uppercase tracking-[.13em] text-orange transition hover:gap-3; }
+  .detail-title { @apply border-l-4 border-orange pl-4 text-2xl font-extrabold text-navy; }
+  .form-label { @apply mb-2 block text-xs font-bold uppercase tracking-wider text-navy; }
+  .form-input { @apply w-full border border-slate-200 bg-white px-4 py-3.5 text-sm text-navy outline-none transition placeholder:text-slate-400 focus:border-orange; }
+}
+
+.grid-pattern {
+  background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.product-card-3d {
+  position: relative;
+  transform-style: preserve-3d;
+  transform-origin: center;
+  transition: transform 180ms ease, box-shadow 300ms ease;
+  will-change: transform;
+}
+.product-card-3d:hover {
+  box-shadow: 0 30px 65px rgba(8, 31, 58, .18);
+}
+.product-card-3d > div {
+  transform: translateZ(24px);
+}
+.card-glare {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(120deg, transparent 25%, rgba(255,255,255,.25) 45%, transparent 65%);
+  transform: translateX(-130%);
+  transition: transform 700ms ease;
+}
+.product-card-3d:hover .card-glare { transform: translateX(130%); }
+.three-stage {
+  box-shadow: inset 0 0 90px rgba(0,0,0,.3), 0 35px 90px rgba(0,0,0,.32);
+}
+.three-stage::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(239,107,37,.5), transparent 12%, transparent 88%, rgba(36,152,255,.25));
+  opacity: .16;
+}
+.showroom-control { transform-style: preserve-3d; }
+.showroom-control:hover { transform: translateX(8px) perspective(800px) rotateY(-2deg); }
+.hero-model {
+  filter: drop-shadow(0 45px 45px rgba(0,0,0,.4));
+  mask-image: linear-gradient(to right, transparent 0%, black 18%, black 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-card-3d, .showroom-control { transition: none; transform: none !important; }
+}
+
+::selection { background: #ef6b25; color: white; }
+::-webkit-scrollbar { width: 9px; }
+::-webkit-scrollbar-track { background: #edf0f3; }
+::-webkit-scrollbar-thumb { background: #a9b3bf; }
+::-webkit-scrollbar-thumb:hover { background: #ef6b25; }
