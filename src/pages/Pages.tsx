@@ -312,7 +312,7 @@ export function HomePage() {
             title="Engineering Reliable Power Solutions for Modern Industries"
           />
           <p className="mt-4 sm:mt-6 text-sm sm:text-base leading-6 sm:leading-7 text-slate-600">
-            Powertech Engineers is an integrated electrical engineering company delivering robust panel systems, factory automation and turnkey distribution solutions to businesses across India. From concept to commissioning, our team combines practical field knowledge with disciplined engineering.
+            Sharma Electrical is an integrated electrical engineering company delivering robust panel systems, factory automation and turnkey distribution solutions to businesses across India. From concept to commissioning, our team combines practical field knowledge with disciplined engineering.
           </p>
           <div className="mt-6 sm:mt-7 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
             {["Quality Engineering", "Advanced Technology", "Reliable Support"].map((x) => (
@@ -421,7 +421,7 @@ function WhySection() {
       <div className="site-container grid gap-8 sm:gap-10 lg:grid-cols-[.75fr_1.25fr] lg:gap-14">
         <div>
           <SectionHeading
-            eyebrow="The Powertech advantage"
+            eyebrow="The Sharma Electrical advantage"
             title="Why Industries Choose Us"
             text="Our clients rely on us for disciplined execution, transparent communication and equipment that performs long after commissioning."
           />
@@ -498,9 +498,9 @@ function CTA() {
 export function AboutPage() {
   return <><PageHero eyebrow="About" title="Built on Engineering. Driven by Reliability." text="An experienced Indian electrical engineering company helping industries power operations with confidence." />
     <section className="section-padding"><div className="site-container grid items-center gap-14 lg:grid-cols-2">
-      <div><SectionHeading eyebrow="Our story" title="Powering Progress Since 2011" /><p className="mt-6 leading-7 text-slate-600">Powertech Engineers began with a clear purpose: to make industrial electrical systems safer, more efficient and easier to maintain. Today, our multidisciplinary team supports projects across manufacturing, infrastructure, pharmaceuticals, water and commercial facilities.</p><p className="mt-4 leading-7 text-slate-600">Our Vadodara facility brings design, fabrication, assembly and testing together under one roof—giving every customer consistent quality and a single accountable partner.</p>
+      <div><SectionHeading eyebrow="Our story" title="Powering Progress Since 2011" /><p className="mt-6 leading-7 text-slate-600">Sharma Electrical began with a clear purpose: to make industrial electrical systems safer, more efficient and easier to maintain. Today, our multidisciplinary team supports projects across manufacturing, infrastructure, pharmaceuticals, water and commercial facilities.</p><p className="mt-4 leading-7 text-slate-600">Our Vadodara facility brings design, fabrication, assembly and testing together under one roof—giving every customer consistent quality and a single accountable partner.</p>
         <div className="mt-8 grid grid-cols-2 gap-4"><div className="bg-steel p-6"><strong className="text-3xl text-navy">35+</strong><p className="mt-1 text-sm text-slate-500">Skilled professionals</p></div><div className="bg-steel p-6"><strong className="text-3xl text-navy">12</strong><p className="mt-1 text-sm text-slate-500">States served</p></div></div></div>
-      <div className="relative"><img src={FACTORY_IMAGE} alt="Powertech manufacturing facility" className="h-[520px] w-full object-cover" /><div className="absolute bottom-0 left-0 max-w-xs bg-orange p-7 text-white"><p className="font-bold leading-6">“We engineer every panel as if our own operation depends on it.”</p></div></div>
+      <div className="relative"><img src={FACTORY_IMAGE} alt="Sharma Electrical manufacturing facility" className="h-[520px] w-full object-cover" /><div className="absolute bottom-0 left-0 max-w-xs bg-orange p-7 text-white"><p className="font-bold leading-6">“We engineer every panel as if our own operation depends on it.”</p></div></div>
     </div></section>
     <section className="section-padding bg-navy text-white"><div className="site-container"><SectionHeading eyebrow="What guides us" title="Principles Behind Every Project" light center /><div className="mt-12 grid gap-px bg-white/10 md:grid-cols-3">{[
       ["Our Mission", "Deliver safe, efficient and scalable electrical systems that enable industries to operate at their best.", Bolt],
@@ -574,7 +574,7 @@ export function ContactPage() {
         <div className="mt-9 space-y-5">{[
           [MapPin, "Visit our facility", "Plot 42, GIDC Industrial Estate, Vadodara, Gujarat 390010"],
           [Phone, "Call us", "+91 98765 43210"],
-          [Mail, "Email projects", "projects@powertech.in"],
+          [Mail, "Email projects", "projects@sharmaelectrical.in"],
           [Clock3, "Working hours", "Monday–Saturday, 9:00 AM–6:00 PM"],
         ].map(([I, t, d]: any) => <div key={t} className="flex gap-4"><span className="grid size-12 shrink-0 place-items-center bg-orange/10 text-orange"><I size={21} /></span><div><h3 className="font-bold text-navy">{t}</h3><p className="mt-1 text-sm leading-6 text-slate-500">{d}</p></div></div>)}</div>
       </div>

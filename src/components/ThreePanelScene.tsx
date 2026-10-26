@@ -45,7 +45,7 @@ function createDigitalMeterTexture(variant = 0) {
 
     ctx.fillStyle = "#38bdf8";
     ctx.font = "bold 13px 'Segoe UI', system-ui";
-    ctx.fillText(`POWERTECH · ${title}`, 16, 26);
+    ctx.fillText(`SHARMA · ${title}`, 16, 26);
 
     ctx.fillStyle = "#22c55e";
     ctx.font = "bold 11px monospace";

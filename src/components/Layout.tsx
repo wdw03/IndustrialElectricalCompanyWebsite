@@ -19,16 +19,16 @@ const nav = [
 
 export function Brand({ light = false, compact = false }: { light?: boolean; compact?: boolean }) {
   return (
-    <Link to="/" className="brand inline-flex items-center gap-2.5 sm:gap-3 transition-all duration-500" aria-label="Powertech Engineers home">
+    <Link to="/" className="brand inline-flex items-center gap-2.5 sm:gap-3 transition-all duration-500" aria-label="Sharma Electrical home">
       <span className={`grid place-items-center bg-orange text-white shadow-md shadow-orange/20 transition-all duration-500 ${compact ? "size-9 rounded-sm" : "size-10 sm:size-11 rounded"}`}>
         <Zap size={compact ? 18 : 22} fill="currentColor" className="transition-all duration-500" />
       </span>
       <span className={`leading-none ${light ? "text-white" : "text-navy"}`}>
         <strong className={`block font-extrabold tracking-[.04em] transition-all duration-500 ${compact ? "text-[16px] sm:text-[17px]" : "text-[18px] sm:text-[19px]"}`}>
-          POWERTECH
+          SHARMA
         </strong>
         <span className={`mt-0.5 block font-bold tracking-[.32em] text-orange transition-all duration-500 ${compact ? "text-[8.5px] sm:text-[9px]" : "text-[9.5px] sm:text-[10px]"}`}>
-          ENGINEERS
+          ELECTRICAL
         </span>
       </span>
     </Link>
@@ -50,17 +50,17 @@ function Navbar() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
-      {/* Frosted Translucent Fade Background Layer */}
+      {/* Frosted Translucent Fade Background Layer - High transparency with subtle blur */}
       <div
         className={`absolute inset-0 -z-10 transition-all duration-500 ease-out pointer-events-none ${
           scrolled
-            ? "bg-[#061527]/55 backdrop-blur-xl border-b border-white/10 shadow-[0_12px_36px_rgba(0,0,0,0.25)] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] opacity-100"
-            : "bg-transparent border-b border-transparent shadow-none opacity-0"
+            ? "bg-[#061527]/25 backdrop-blur-md border-b border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.15)] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] opacity-100"
+            : "bg-[#061527]/0 backdrop-blur-none border-b border-transparent shadow-none opacity-0"
         }`}
       />
       <div
-        className={`h-[2.5px] bg-gradient-to-r from-orange via-amber-400 to-orange transition-opacity duration-500 ${
-          scrolled ? "opacity-100 shadow-sm" : "opacity-75"
+        className={`h-[2px] bg-gradient-to-r from-orange/85 via-amber-400/90 to-orange/85 transition-opacity duration-500 ${
+          scrolled ? "opacity-100 shadow-sm" : "opacity-70"
         }`}
       />
       <nav
@@ -180,13 +180,13 @@ function Footer() {
           <div className="space-y-5 text-sm text-slate-400">
             <p className="flex gap-3"><MapPin className="mt-1 shrink-0 text-orange" size={18} />Plot 42, GIDC Industrial Estate, Vadodara, Gujarat 390010</p>
             <a className="flex gap-3 hover:text-white" href="tel:+919876543210"><Phone className="shrink-0 text-orange" size={18} />+91 98765 43210</a>
-            <a className="flex gap-3 hover:text-white" href="mailto:projects@powertech.in"><Mail className="shrink-0 text-orange" size={18} />projects@powertech.in</a>
+            <a className="flex gap-3 hover:text-white" href="mailto:projects@sharmaelectrical.in"><Mail className="shrink-0 text-orange" size={18} />projects@sharmaelectrical.in</a>
           </div>
         </div>
       </div>
       <div className="border-t border-white/10">
         <div className="site-container flex flex-col gap-2 py-5 text-xs text-slate-500 sm:flex-row sm:justify-between">
-          <p>© 2026 Powertech Engineers. All rights reserved.</p><p>Reliable Power. Smarter Engineering.</p>
+          <p>© 2026 Sharma Electrical. All rights reserved.</p><p>Reliable Power. Smarter Engineering.</p>
         </div>
       </div>
     </footer>
@@ -197,7 +197,7 @@ export function RootLayout() {
   const location = useLocation();
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
-    const title = location.pathname === "/" ? "Powertech Engineers | Industrial Electrical Solutions" : `${location.pathname.split("/").filter(Boolean).map((s) => s.replaceAll("-", " ")).map((s) => s.replace(/\b\w/g, (c) => c.toUpperCase())).join(" | ")} | Powertech Engineers`;
+    const title = location.pathname === "/" ? "Sharma Electrical | Industrial Electrical Solutions" : `${location.pathname.split("/").filter(Boolean).map((s) => s.replaceAll("-", " ")).map((s) => s.replace(/\b\w/g, (c) => c.toUpperCase())).join(" | ")} | Sharma Electrical`;
     document.title = title;
   }, [location.pathname]);
 

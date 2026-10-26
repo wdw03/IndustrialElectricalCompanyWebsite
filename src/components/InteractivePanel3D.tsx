@@ -58,7 +58,7 @@ function createDigitalMfmTexture(channel = "INCOMER 1", voltage = "415.2", curre
     // Header strip on LCD
     ctx.fillStyle = "#38bdf8";
     ctx.font = "bold 13px 'Segoe UI', system-ui, sans-serif";
-    ctx.fillText("POWERTECH MFM-96", 36, 48);
+    ctx.fillText("SHARMA MFM-96", 36, 48);
 
     ctx.fillStyle = "#22c55e";
     ctx.font = "bold 11px monospace";
@@ -173,7 +173,7 @@ function createScadaHmiTexture() {
 
     ctx.fillStyle = "#ffffff";
     ctx.font = "bold 16px 'Segoe UI', system-ui, sans-serif";
-    ctx.fillText("POWERTECH SCADA PRO · PCC MONITORING SYSTEM", 20, 28);
+    ctx.fillText("SHARMA SCADA PRO · PCC MONITORING SYSTEM", 20, 28);
 
     ctx.font = "bold 13px monospace";
     ctx.textAlign = "right";
@@ -423,7 +423,7 @@ function createAcbFaceplateTexture(breakerName = "3200A 4P ACB") {
 
     ctx.fillStyle = "#ef6b25";
     ctx.font = "bold 17px 'Segoe UI', sans-serif";
-    ctx.fillText("POWERTECH · C-POWER SERIES", 32, 44);
+    ctx.fillText("SHARMA · C-POWER SERIES", 32, 44);
 
     ctx.fillStyle = "#ffffff";
     ctx.font = "bold 15px monospace";
