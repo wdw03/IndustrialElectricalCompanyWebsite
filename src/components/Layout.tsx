@@ -62,18 +62,18 @@ function Navbar() {
         }`}
       />
       <nav
-        className={`w-full max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-between transition-all duration-300 ease-out ${
+        className={`relative w-full max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-between transition-all duration-300 ease-out ${
           scrolled ? "h-[64px] sm:h-[68px]" : "h-[84px] sm:h-[90px]"
         }`}
         aria-label="Main navigation"
       >
         {/* Left: Brand */}
-        <div className="shrink-0">
+        <div className="shrink-0 z-10">
           <Brand light compact={scrolled} />
         </div>
 
-        {/* Center: Nav Links - Visible on all PC & Laptop screens (>= 1024px) */}
-        <div className="hidden lg:flex items-center gap-3.5 lg:gap-5 xl:gap-7 2xl:gap-8 mx-auto px-4">
+        {/* True Center: Nav Links */}
+        <div className="hidden lg:flex items-center gap-3 lg:gap-4 xl:gap-6 2xl:gap-7 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
           {nav.map(([label, href]) => (
             <NavLink
               key={href}
@@ -86,8 +86,8 @@ function Navbar() {
           ))}
         </div>
 
-        {/* Right Actions: Consultation Ticker + Get a Quote Button - Pushed to far right */}
-        <div className="hidden lg:flex items-center gap-3.5 xl:gap-4 shrink-0 ml-auto lg:ml-0">
+        {/* Right Actions: Consultation Ticker + Get a Quote Button */}
+        <div className="hidden lg:flex items-center gap-3.5 xl:gap-4 shrink-0 ml-auto z-10">
           <InteractiveTickerButton />
           
           <Link
