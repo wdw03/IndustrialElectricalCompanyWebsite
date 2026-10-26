@@ -3,6 +3,7 @@ import { Link, NavLink, Outlet, useLocation } from "react-router";
 import { ArrowRight, Globe2, Mail, MapPin, Menu, Phone, Send, Share2, X, Zap } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import InteractiveTickerButton from "./InteractiveTickerButton";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,15 +17,19 @@ const nav = [
   ["Contact", "/contact"],
 ];
 
-export function Brand({ light = false }: { light?: boolean }) {
+export function Brand({ light = false, compact = false }: { light?: boolean; compact?: boolean }) {
   return (
-    <Link to="/" className="brand inline-flex items-center gap-3" aria-label="Powertech Engineers home">
-      <span className="grid size-11 place-items-center bg-orange text-white shadow-lg shadow-orange/20">
-        <Zap size={23} fill="currentColor" />
+    <Link to="/" className="brand inline-flex items-center gap-2.5 sm:gap-3 transition-all duration-300" aria-label="Powertech Engineers home">
+      <span className={`grid place-items-center bg-orange text-white shadow-md shadow-orange/20 transition-all duration-300 ${compact ? "size-9 rounded-sm" : "size-10 sm:size-11 rounded"}`}>
+        <Zap size={compact ? 18 : 22} fill="currentColor" className="transition-all duration-300" />
       </span>
       <span className={`leading-none ${light ? "text-white" : "text-navy"}`}>
-        <strong className="block text-[19px] font-extrabold tracking-[.04em]">POWERTECH</strong>
-        <span className="mt-1 block text-[10px] font-bold tracking-[.34em] text-orange">ENGINEERS</span>
+        <strong className={`block font-extrabold tracking-[.04em] transition-all duration-300 ${compact ? "text-[16px] sm:text-[17px]" : "text-[18px] sm:text-[19px]"}`}>
+          POWERTECH
+        </strong>
+        <span className={`mt-0.5 block font-bold tracking-[.32em] text-orange transition-all duration-300 ${compact ? "text-[8.5px] sm:text-[9px]" : "text-[9.5px] sm:text-[10px]"}`}>
+          ENGINEERS
+        </span>
       </span>
     </Link>
   );
@@ -36,7 +41,7 @@ function Navbar() {
   const location = useLocation();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => setScrolled(window.scrollY > 25);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -44,32 +49,99 @@ function Navbar() {
   useEffect(() => setOpen(false), [location.pathname]);
 
   return (
-    <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled ? "bg-white shadow-[0_8px_30px_rgba(8,28,55,.09)]" : "bg-white/95"}`}>
-      <div className="h-1 bg-orange" />
-      <nav className={`site-container flex items-center justify-between transition-all ${scrolled ? "h-[76px]" : "h-[86px]"}`} aria-label="Main navigation">
-        <Brand />
-        <div className="hidden items-center gap-7 xl:flex">
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ease-out ${
+        scrolled
+          ? "bg-[#061527]/85 backdrop-blur-xl border-b border-white/10 shadow-[0_12px_36px_rgba(0,0,0,0.35)]"
+          : "bg-transparent border-b border-transparent shadow-none"
+      }`}
+    >
+      <div
+        className={`h-[3px] bg-gradient-to-r from-orange via-amber-400 to-orange transition-opacity duration-300 ${
+          scrolled ? "opacity-100 shadow-sm" : "opacity-85"
+        }`}
+      />
+      <nav
+        className={`w-full max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-between transition-all duration-300 ease-out ${
+          scrolled ? "h-[64px] sm:h-[68px]" : "h-[84px] sm:h-[90px]"
+        }`}
+        aria-label="Main navigation"
+      >
+        {/* Left: Brand */}
+        <div className="shrink-0">
+          <Brand light compact={scrolled} />
+        </div>
+
+        {/* Center: Nav Links - Visible on all PC & Laptop screens (>= 1024px) */}
+        <div className="hidden lg:flex items-center gap-3.5 lg:gap-5 xl:gap-7 2xl:gap-8 mx-auto px-4">
           {nav.map(([label, href]) => (
-            <NavLink key={href} to={href} end={href === "/"} className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}>
+            <NavLink
+              key={href}
+              to={href}
+              end={href === "/"}
+              className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
+            >
               {label}
             </NavLink>
           ))}
-          <Link to="/contact" className="btn-primary ml-1">
-            Get a quote <ArrowRight size={16} />
+        </div>
+
+        {/* Right Actions: Consultation Ticker + Get a Quote Button - Pushed to far right */}
+        <div className="hidden lg:flex items-center gap-3.5 xl:gap-4 shrink-0 ml-auto lg:ml-0">
+          <InteractiveTickerButton />
+          
+          <Link
+            to="/contact"
+            className={`btn-primary group rounded-md shadow-md shadow-orange/20 hover:shadow-lg hover:shadow-orange/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center gap-2 ${
+              scrolled ? "!px-4 !py-2.5 text-[11.5px] xl:text-[12px]" : "!px-5 !py-3 text-[12px] xl:text-[13px]"
+            }`}
+          >
+            <span className="font-bold tracking-wider">Get a quote</span>
+            <ArrowRight size={scrolled ? 14 : 15} className="transition-transform duration-200 group-hover:translate-x-1" />
           </Link>
         </div>
-        <button className="grid size-11 place-items-center border border-slate-200 text-navy xl:hidden" onClick={() => setOpen(!open)} aria-label="Toggle navigation" aria-expanded={open}>
-          {open ? <X /> : <Menu />}
+
+        {/* Mobile Hamburger Button - Only below 1024px */}
+        <button
+          className={`grid place-items-center rounded-lg border transition-all duration-300 hover:border-orange hover:text-orange hover:shadow-sm lg:hidden ${
+            scrolled
+              ? "size-9 border-white/15 bg-white/10 text-white"
+              : "size-10 border-white/20 bg-white/10 backdrop-blur-md text-white shadow-sm"
+          }`}
+          onClick={() => setOpen(!open)}
+          aria-label="Toggle navigation"
+          aria-expanded={open}
+        >
+          {open ? <X size={20} /> : <Menu size={20} />}
         </button>
       </nav>
-      <div className={`overflow-hidden bg-white transition-all duration-300 xl:hidden ${open ? "max-h-[620px] border-t border-slate-100" : "max-h-0"}`}>
-        <div className="site-container flex flex-col py-4">
+
+      {/* Mobile Drawer */}
+      <div
+        className={`overflow-hidden bg-[#061527]/95 backdrop-blur-2xl transition-all duration-300 lg:hidden ${
+          open ? "max-h-[640px] border-t border-white/10 shadow-2xl" : "max-h-0"
+        }`}
+      >
+        <div className="site-container flex flex-col py-5 space-y-1">
           {nav.map(([label, href]) => (
-            <NavLink key={href} to={href} end={href === "/"} className={({ isActive }) => `border-b border-slate-100 px-1 py-3.5 text-sm font-semibold ${isActive ? "text-orange" : "text-navy"}`}>
+            <NavLink
+              key={href}
+              to={href}
+              end={href === "/"}
+              className={({ isActive }) =>
+                `rounded-md px-3 py-3 text-sm font-bold tracking-wide transition-colors ${
+                  isActive ? "bg-orange/15 text-orange" : "text-slate-200 hover:bg-white/5 hover:text-orange"
+                }`
+              }
+            >
               {label}
             </NavLink>
           ))}
-          <Link to="/contact" className="btn-primary mt-4 justify-center">Get a quote <ArrowRight size={16} /></Link>
+          <div className="pt-3 border-t border-white/10">
+            <Link to="/contact" className="btn-primary w-full justify-center !py-3.5 rounded-md shadow-md shadow-orange/25">
+              Get a quote <ArrowRight size={16} />
+            </Link>
+          </div>
         </div>
       </div>
     </header>
