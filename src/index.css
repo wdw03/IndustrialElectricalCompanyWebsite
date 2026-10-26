@@ -25,7 +25,7 @@ button { cursor: pointer; }
   .btn-primary { @apply inline-flex items-center gap-2 bg-orange px-5 sm:px-6 py-3.5 sm:py-4 text-xs font-bold uppercase tracking-[.12em] text-white transition duration-300 hover:bg-[#d95714] shadow-sm hover:shadow-md hover:shadow-orange/20; }
   .btn-dark { @apply inline-flex items-center gap-2 bg-navy px-5 sm:px-6 py-3.5 sm:py-4 text-xs font-bold uppercase tracking-[.12em] text-white transition hover:bg-orange shadow-sm; }
   .btn-outline-light { @apply inline-flex items-center border border-white/45 px-5 sm:px-6 py-3.5 sm:py-4 text-xs font-bold uppercase tracking-[.12em] text-white transition hover:border-white hover:bg-white hover:text-navy; }
-  .nav-link { @apply relative py-1.5 text-[12px] xl:text-[13px] font-bold uppercase tracking-[.08em] text-slate-200 transition duration-200 hover:text-orange; }
+  .nav-link { @apply relative px-1 py-1 text-[11px] xl:text-[11.5px] 2xl:text-[12px] font-bold uppercase tracking-[.06em] text-slate-200 transition duration-200 hover:text-orange; }
   .nav-link::after { content: ""; @apply absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] w-0 rounded-full bg-orange transition-all duration-300; }
   .nav-link:hover::after, .nav-link.active::after { @apply w-full; }
   .nav-link.active { @apply text-orange; }

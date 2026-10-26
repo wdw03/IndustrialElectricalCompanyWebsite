@@ -73,7 +73,7 @@ function Navbar() {
         </div>
 
         {/* True Center: Nav Links */}
-        <div className="hidden lg:flex items-center gap-3 lg:gap-4 xl:gap-6 2xl:gap-7 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+        <div className="hidden lg:flex items-center gap-3.5 lg:gap-4 xl:gap-6 2xl:gap-8 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
           {nav.map(([label, href]) => (
             <NavLink
               key={href}
@@ -86,18 +86,18 @@ function Navbar() {
           ))}
         </div>
 
-        {/* Right Actions: Consultation Ticker + Get a Quote Button */}
-        <div className="hidden lg:flex items-center gap-3.5 xl:gap-4 shrink-0 ml-auto z-10">
+        {/* Right Actions: Consultation Ticker + Compact Get a Quote Button */}
+        <div className="hidden lg:flex items-center gap-3 xl:gap-3.5 shrink-0 ml-auto z-10">
           <InteractiveTickerButton />
           
           <Link
             to="/contact"
-            className={`btn-primary group rounded-md shadow-md shadow-orange/20 hover:shadow-lg hover:shadow-orange/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center gap-2 ${
-              scrolled ? "!px-4 !py-2.5 text-[11.5px] xl:text-[12px]" : "!px-5 !py-3 text-[12px] xl:text-[13px]"
+            className={`btn-primary group rounded shadow-sm shadow-orange/20 hover:shadow-md hover:shadow-orange/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center gap-1.5 ${
+              scrolled ? "!px-3 !py-1.5 text-[10.5px] xl:text-[11px]" : "!px-3.5 !py-2 text-[11px] xl:text-[11.5px]"
             }`}
           >
             <span className="font-bold tracking-wider">Get a quote</span>
-            <ArrowRight size={scrolled ? 14 : 15} className="transition-transform duration-200 group-hover:translate-x-1" />
+            <ArrowRight size={13} className="transition-transform duration-200 group-hover:translate-x-1" />
           </Link>
         </div>
 
