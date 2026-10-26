@@ -19,15 +19,15 @@ const nav = [
 
 export function Brand({ light = false, compact = false }: { light?: boolean; compact?: boolean }) {
   return (
-    <Link to="/" className="brand inline-flex items-center gap-2.5 sm:gap-3 transition-all duration-300" aria-label="Powertech Engineers home">
-      <span className={`grid place-items-center bg-orange text-white shadow-md shadow-orange/20 transition-all duration-300 ${compact ? "size-9 rounded-sm" : "size-10 sm:size-11 rounded"}`}>
-        <Zap size={compact ? 18 : 22} fill="currentColor" className="transition-all duration-300" />
+    <Link to="/" className="brand inline-flex items-center gap-2.5 sm:gap-3 transition-all duration-500" aria-label="Powertech Engineers home">
+      <span className={`grid place-items-center bg-orange text-white shadow-md shadow-orange/20 transition-all duration-500 ${compact ? "size-9 rounded-sm" : "size-10 sm:size-11 rounded"}`}>
+        <Zap size={compact ? 18 : 22} fill="currentColor" className="transition-all duration-500" />
       </span>
       <span className={`leading-none ${light ? "text-white" : "text-navy"}`}>
-        <strong className={`block font-extrabold tracking-[.04em] transition-all duration-300 ${compact ? "text-[16px] sm:text-[17px]" : "text-[18px] sm:text-[19px]"}`}>
+        <strong className={`block font-extrabold tracking-[.04em] transition-all duration-500 ${compact ? "text-[16px] sm:text-[17px]" : "text-[18px] sm:text-[19px]"}`}>
           POWERTECH
         </strong>
-        <span className={`mt-0.5 block font-bold tracking-[.32em] text-orange transition-all duration-300 ${compact ? "text-[8.5px] sm:text-[9px]" : "text-[9.5px] sm:text-[10px]"}`}>
+        <span className={`mt-0.5 block font-bold tracking-[.32em] text-orange transition-all duration-500 ${compact ? "text-[8.5px] sm:text-[9px]" : "text-[9.5px] sm:text-[10px]"}`}>
           ENGINEERS
         </span>
       </span>
@@ -41,7 +41,7 @@ function Navbar() {
   const location = useLocation();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 25);
+    const onScroll = () => setScrolled(window.scrollY > 15);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -49,20 +49,22 @@ function Navbar() {
   useEffect(() => setOpen(false), [location.pathname]);
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ease-out ${
-        scrolled
-          ? "bg-[#061527]/85 backdrop-blur-xl border-b border-white/10 shadow-[0_12px_36px_rgba(0,0,0,0.35)]"
-          : "bg-transparent border-b border-transparent shadow-none"
-      }`}
-    >
+    <header className="fixed inset-x-0 top-0 z-50">
+      {/* Frosted Translucent Fade Background Layer */}
       <div
-        className={`h-[3px] bg-gradient-to-r from-orange via-amber-400 to-orange transition-opacity duration-300 ${
-          scrolled ? "opacity-100 shadow-sm" : "opacity-85"
+        className={`absolute inset-0 -z-10 transition-all duration-500 ease-out pointer-events-none ${
+          scrolled
+            ? "bg-[#061527]/55 backdrop-blur-xl border-b border-white/10 shadow-[0_12px_36px_rgba(0,0,0,0.25)] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] opacity-100"
+            : "bg-transparent border-b border-transparent shadow-none opacity-0"
+        }`}
+      />
+      <div
+        className={`h-[2.5px] bg-gradient-to-r from-orange via-amber-400 to-orange transition-opacity duration-500 ${
+          scrolled ? "opacity-100 shadow-sm" : "opacity-75"
         }`}
       />
       <nav
-        className={`relative w-full max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-between transition-all duration-300 ease-out ${
+        className={`relative w-full max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-between transition-all duration-500 ease-out ${
           scrolled ? "h-[64px] sm:h-[68px]" : "h-[84px] sm:h-[90px]"
         }`}
         aria-label="Main navigation"
@@ -92,7 +94,7 @@ function Navbar() {
           
           <Link
             to="/contact"
-            className={`btn-primary group rounded shadow-sm shadow-orange/20 hover:shadow-md hover:shadow-orange/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center gap-1.5 ${
+            className={`btn-primary group rounded shadow-sm shadow-orange/20 hover:shadow-md hover:shadow-orange/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-500 flex items-center gap-1.5 ${
               scrolled ? "!px-3 !py-1.5 text-[10.5px] xl:text-[11px]" : "!px-3.5 !py-2 text-[11px] xl:text-[11.5px]"
             }`}
           >
@@ -103,7 +105,7 @@ function Navbar() {
 
         {/* Mobile Hamburger Button - Only below 1024px */}
         <button
-          className={`grid place-items-center rounded-lg border transition-all duration-300 hover:border-orange hover:text-orange hover:shadow-sm lg:hidden ${
+          className={`grid place-items-center rounded-lg border transition-all duration-500 hover:border-orange hover:text-orange hover:shadow-sm lg:hidden ${
             scrolled
               ? "size-9 border-white/15 bg-white/10 text-white"
               : "size-10 border-white/20 bg-white/10 backdrop-blur-md text-white shadow-sm"
