@@ -72,8 +72,8 @@ function Navbar() {
           <Brand light compact={scrolled} />
         </div>
 
-        {/* True Center: Nav Links */}
-        <div className="hidden lg:flex items-center gap-3.5 lg:gap-4 xl:gap-6 2xl:gap-8 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+        {/* True Center: Nav Links - Compact spacing matching screenshot */}
+        <div className="hidden lg:flex items-center gap-2.5 lg:gap-3.5 xl:gap-4.5 2xl:gap-5 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
           {nav.map(([label, href]) => (
             <NavLink
               key={href}
